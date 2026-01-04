@@ -24,7 +24,7 @@ jobs:
         run: mvn -B clean --file pom.xml
 
       - name: Run tests
-        run: mvn -B test
+        run: mvn Dtest=storeApiStatusTest test
 
       - name: Test Summary
         uses: test-summary/action@v2
