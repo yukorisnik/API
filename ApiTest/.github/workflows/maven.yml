@@ -21,7 +21,7 @@ jobs:
           cache: maven
 
       - name: Build with maven
-        run: mvn -B package --file apiTest/pom.xml
+        run: mvn -B package --file ApiTest/pom.xml
 
       - name: Run tests
         run: mvn Dtest=storeApiStatusTest test
