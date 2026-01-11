@@ -27,6 +27,6 @@ public class StoreApiCountTest {
 
         assertEquals(20, products.length);
 
-        System.out.println("Antal produkter: " + products.length + ", test ok!");
+        System.out.println("Antal produkter: " + products.length + ", test ok lokalt!");
     }
 }
