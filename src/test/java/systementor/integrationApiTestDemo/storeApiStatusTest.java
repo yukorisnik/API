@@ -1,4 +1,5 @@
 package systementor.integrationApiTestDemo;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -16,10 +17,9 @@ public class storeApiStatusTest {
 
         if (response == null) throw new AssertionError();
         assertEquals(200, response.getStatusCode().value());
-        //System.out.println("Response: " + response);
-        System.out.println("Status: " + response.getStatusCode());
-        System.out.println("Body: " + response.getBody());
 
-        //assertTrue(response.getStatusCode().is2xxSuccessful());
+        System.out.println("Status: " + response.getStatusCode());
+        //System.out.println("Body: " + response.getBody());
     }
+
 }
