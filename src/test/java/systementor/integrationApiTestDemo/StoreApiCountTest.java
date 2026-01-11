@@ -1,33 +1,32 @@
 package systementor.integrationApiTestDemo;
 
-import java.util.List;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class StoreApiCountTest {
 
     @Test
-    void verifyNumberOfIds() {
+    void verifyNumberOfIds() throws Exception {
         WebClient client = WebClient.create("https://fakestoreapi.com");
 
-        List<Map<String, Object>> products = client.get()
+        var response = client.get()
                 .uri("/products")
-                //.header("User-Agent", "GitHubActionsTest")
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {})
+                .exchangeToMono(r -> r.toEntity(String.class))
                 .block();
 
-        if (products == null || products.size() != 20) {
-            throw new RuntimeException("Misslyckades: Förväntade 20 ID:n men hittade " + (products != null ? products.size() : 0));
-        }
+        if (response == null) throw new AssertionError();
 
-        // Kontrollera antalet element i listan
-        assertEquals(20, products.size());
-        
-        System.out.println("Antal ID:n hittade: " + products.size() +", test ok");
+        String body = response.getBody();
+
+        // JSON-arrayen till en Object[] 
+        ObjectMapper mapper = new ObjectMapper();
+        Object[] products = mapper.readValue(body, Object[].class);
+
+        assertEquals(20, products.length);
+
+        System.out.println("Antal produkter: " + products.length + ", test ok!");
     }
 }
