@@ -29,6 +29,6 @@ public class StoreApiCountTest {
         assertEquals(20, products.size());
         //assertTrue(products.size() > 0);
 
-        System.out.println("Antal ID:n hittade: " + products.size() +", test ok");
+        System.out.println("Antal ID:n hittade: " + products.size() +", test ok >> main med 403 i GitHub Actions");
     }
 }
