@@ -12,7 +12,6 @@ public class StoreApiStatusTest {
 
         var response = client.get()
                 .uri("/products")
-                .header("User-Agent", "GitHubActionsTest")
                 .exchangeToMono(r -> r.toEntity(String.class))
                 .block();
 

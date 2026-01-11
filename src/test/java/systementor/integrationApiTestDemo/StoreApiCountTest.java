@@ -16,6 +16,7 @@ public class StoreApiCountTest {
 
         List<Map<String, Object>> products = client.get()
                 .uri("/products")
+                .header("User-Agent", "GitHubActionsTest")
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {})
                 .block();
@@ -26,6 +27,7 @@ public class StoreApiCountTest {
 
         // Kontrollera antalet element i listan
         assertEquals(20, products.size());
+        //assertTrue(products.size() > 0);
 
         System.out.println("Antal ID:n hittade: " + products.size() +", test ok");
     }
