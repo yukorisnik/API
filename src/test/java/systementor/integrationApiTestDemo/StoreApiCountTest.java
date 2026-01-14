@@ -22,7 +22,7 @@ public class StoreApiCountTest {
                 .block();
 
         if (products == null || products.size() != 20) {
-            throw new RuntimeException("Misslyckades: Förväntade 20 ID:n men hittade " + (products != null ? products.size() : 0));
+            throw new RuntimeException("Fel: Förväntade 20 ID:n men hittade " + (products != null ? products.size() : 0));
         }
 
         // Kontrollera antalet element i listan

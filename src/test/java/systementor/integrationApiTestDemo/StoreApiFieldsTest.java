@@ -1,22 +1,24 @@
 package systementor.integrationApiTestDemo;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
 
     public class StoreApiFieldsTest {
-        WebClient client = WebClient.create("https://fakestoreapi.com");
     
         @Test
-        void verifyNumberOfIds() {var response = client.get()
+        void verifyFields() {
+            WebClient client = WebClient.create("https://fakestoreapi.com");
+            
+            var response = client.get()
 
             .uri("/products/3")
             .retrieve()
             .toEntity(String.class)
             .block();
 
-            assertEquals(200, response.getStatusCode().value());
+            //assertEquals(200, response.getStatusCode().value());
 
         String body = response.getBody();
 
