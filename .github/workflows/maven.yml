@@ -21,7 +21,7 @@ jobs:
           cache: maven
 
       - name: Run tests
-        run: mvn -Dtest=StoreApiStatusTest,StoreApiCountTest test
+        run: mvn -Dtest=StoreApiStatusTest,StoreApiCountTest,StoreApiFieldsTest test
 
       - name: Test Summary
         uses: test-summary/action@v2
