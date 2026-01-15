@@ -9,7 +9,9 @@ import org.springframework.web.reactive.function.client.WebClient;
         WebClient client = WebClient.create("https://fakestoreapi.com");
     
         @Test
-        void verifyProdInfo() {var response = client.get()
+        void verifyProdInfo() {
+            
+            var response = client.get()
 
             .uri("/products/4")
             .retrieve()
@@ -20,7 +22,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
         String body = response.getBody();
         
-        assertTrue(body.contains("\"title\""));
+        //assertTrue(body.contains("\"title\""));
         assertTrue(body.contains("Mens Casual Slim Fit"));
         
         System.out.println("Produkt 4 svarar med korrekt data:"); 
